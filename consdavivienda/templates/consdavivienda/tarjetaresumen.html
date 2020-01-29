@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<style>
+.size{
+  width: 500px;
+}
+</style>
+{% extends 'consdavivienda/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<div class="container">
+  <div class="row mb-2">
+	<div class="col-md-6">
+	<strong class="d-inline-block mb-2 text-primary">Informaci&oacute;n  Personal</strong>
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h4 class="mb-0">{{resumenObject.nombre}} {{resumenObject.primer_apellido}} {{resumenObject.segundo_apellido}}</h3>
+          <div class="mb-1 text-muted">Identificaci&oacute;n : {{resumenObject.identificacion}}</div>
+          <div class="mb-1 text-muted">Tipo Documento : {{resumenObject.tipo_identificacion}}</div>
+          <div class="mb-1 text-muted">Fecha Nacimiento : {{resumenObject.fecha_nacimiento}}</div>
+          <div class="mb-1 text-muted">Telefono : {{resumenObject.telefono}}</div>
+		  <div class="mb-1 text-muted">Direcci&oacute;n : {{resumenObject.direccion}} -  Ciuddad: {{resumenObject.ciudad}}   -  {{resumenObject.pais}}</div>
+          <div class="mb-1 text-muted">Estado: {{resumenObject.estado}}</div>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+         <img src="{% static 'consdavivienda/images/fotocliente.jpg' %}" class="rounded float-right"  style="width: 200px;" alt="Image Client">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+	        <strong class="d-inline-block mb-2 text-primary">Perfil Transaccional</strong> 
+			<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+				<div class="col size">
+					<div class="mb-1 text-muted">Total de Operaciones Pendientes : {{ resumenObject.total_oper_pendientes|floatformat:0|intcomma}}</div>
+					<div  class="mb-1 text-muted">Total de Operaciones Liquidadas : {{ resumenObject.total_oper_liquidadas|floatformat:0|intcomma }}</div>
+					<div  class="mb-1 text-muted">Total de Operaciones Anuladas : {{ resumenObject.total_oper_anuladas|floatformat:0|intcomma }}</div>
+					<div  class="mb-1 text-muted">Total de Transacciones en EU : {{resumenObject.total_tran_eur|floatformat:0|intcomma }}</div>
+					<div  class="mb-1 text-muted">Total de Transacciones en USD : {{resumenObject.total_tran_usd|floatformat:0|intcomma }}</div>
+					<div  class="mb-1 text-muted">Total de Transacciones en CAD : {{resumenObject.total_tran_cad|floatformat:0|intcomma	}}</div>
+					<div class="mb-1 text-muted">Total de Operaciones V : {{resumenObject.total_oper_v|floatformat:0|intcomma}}</div>
+					<div class="mb-1 text-muted">Total de Operaciones C : {{resumenObject.total_oper_c|floatformat:0|intcomma}}</div>
+					<div class="mb-1 text-muted">Total de Operaciones J : {{resumenObject.total_oper_j|floatformat:0|intcomma}}</div>
+				</div>
+            </div>
+	</div>
+  </div>
+  <div class ="row mb-2">
+		<div class="col-md-6">
+				<strong class="d-inline-block mb-2 text-primary">Estad&iacute;stica de Cliente</strong> 
+				<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col size">
+					<div class="mb-1 text-muted">Promedio Dolar : {{resumenObject.avg_valor_usd|floatformat:0|intcomma}}</div>       
+				 <!--   <div class="mb-1 text-muted">Monto Dolar Percentil 25 : {{resumenObject.monto_usd_q25}}</div> -->
+					<div class="mb-1 text-muted">Monto Medio de Dolar : {{resumenObject.monto_usd_q50|floatformat:0|intcomma}}</div>
+				<!--<div class="mb-1 text-muted">Monto Dolar Percentil 75 : {{resumenObject.monto_usd_q75}}</div> --->
+					<div class="mb-1 text-muted">M&aacute;ximo d&iacute;as sin Operar : {{resumenObject.maxim_d_sin_oper|floatformat:0|intcomma}}</div>
+					<div class="mb-1 text-muted">M&iacute;nimo d&iacute;as sin Operar : {{resumenObject.min_dias_sin_transar|floatformat:0|intcomma}}</div>
+				<!--<div class="mb-1 text-muted">D&iacute;as sin Operar  Percentil 25 : {{resumenObject.dias_sin_transar_q25}}</div> -->
+					<div class="mb-1 text-muted">D&iacute;as Medio sin realizar Operaciones : {{resumenObject.dias_sin_transar_q50|floatformat:0|intcomma}}</div>
+				<!--<div class="mb-1 text-muted">D&iacute;as sin Operar  Percentil 75 : {{resumenObject.dias_sin_transar_q75}}</div> -->
+					</div>
+				</div>
+		</div>
+		
+		<div class="col-md-6">
+				<strong class="d-inline-block mb-2 text-primary">Segmento Cliente</strong> 
+				<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col size">
+						<div class="mb-1 text-muted">Tipo Cliente : Premium</div>
+						<div class="mb-1 text-muted">Rango: 10 - 20</div>
+						<div class="mb-1 text-muted">Cantidad Movimiento: 20</div>
+					</div>
+				</div>
+		</div>
+  </div> 
+ </div> 
+{% endblock %}

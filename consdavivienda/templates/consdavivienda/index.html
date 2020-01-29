@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'consdavivienda/base.html' %}
+{% load static %}
+ 
+{% block content %}
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Formulario Busqueda</a>
+          </li>
+          <li class="breadcrumb-item active">Consulta Cliente</li>
+        </ol>
+
+        <!-- Icon Cards-->
+        
+        <!-- Area Chart Example-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-area"></i>
+            Consulta Cliente</div>
+          <div class="card-body">
+			<form id="formulario">
+			<div class="form-group">
+				<label for="nombre">Identificación:</label>
+				<input class="form-control" id="identificacion" type="text" name="identificacion"/>
+			</div>
+			<button type="button" onclick="consultaPerfil()">Consultar</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+       
+          <div class="card-body">
+
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+      </div>	
+{% endblock %}

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<style>
+.size{
+  width: 500px;
+}
+
+.new_container {
+	width:100%;
+	padding-right:15px;
+	padding-left:15px;
+	margin-right:auto;
+	margin-left:auto
+}
+.new_row{
+	margin-right:-15px;
+	margin-left:-15px
+}  
+
+.nav-tabs {
+  border-bottom:1px solid #ddd
+}
+.navbar{display:none}
+</style>
+{% extends 'consdavivienda/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<div class="new_container">
+
+<div class="row mb-2">
+	<div class="col">
+	<strong class="d-inline-block mb-2 text-primary">Informaci&oacute;n  Persona Natural</strong>
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h4 class="mb-0">{{resumenObject.nombre}} {{resumenObject.primer_apellido}} {{resumenObject.segundo_apellido}}</h3>
+          <div class="mb-1 text-muted">Identificaci&oacute;n : {{resumenObject.identificacion}}</div>
+          <div class="mb-1 text-muted">Tipo Documento : {{resumenObject.tipo_identificacion}}</div>
+          <div class="mb-1 text-muted">Fecha Nacimiento : {{resumenObject.fecha_nacimiento}}  - {{resumenObject.lugar_nacimiento}} </div>
+          <div class="mb-1 text-muted">Telefono : {{resumenObject.celular_principal}}</div>
+		  <div class="mb-1 text-muted">Direcci&oacute;n : {{resumenObject.direccion_contacto_corta}} -  Ciudad: {{resumenObject.ciudad}}   -  {{resumenObject.pais}}</div>
+          <div class="mb-1 text-muted">Email: {{resumenObject.email_principal}}</div>
+		  <div class="mb-1 text-muted">Antiguedad: {{resumenObject.antiguedad}}</div>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+         <img src="{% static 'consdavivienda/images/fotocliente.jpg' %}" class="rounded float-right"  style="width: 200px;" alt="Image Client">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class ="row"> 
+	 &nbsp;&nbsp;&nbsp;
+	 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#personalInformationLong">
+	  Información Basica
+	</button> 
+     &nbsp;&nbsp;&nbsp;
+	 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProducts">
+	  Informacion  Productos
+	</button> 
+	 &nbsp;&nbsp;&nbsp;
+	 
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#personalInformationME">
+	  Informacion  Financiera ME 
+	</button> 
+	 &nbsp;&nbsp;&nbsp;
+<!-- 
+	 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+	  Riesgos
+	</button> 
+	 
+	 &nbsp;&nbsp;&nbsp;
+	 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+	  Ingresos
+	</button>
+-->
+  </div>
+  
+ <!-- Modal  Informacion  Personal :-->
+
+ 
+ <div class="modal fade" id="personalInformationLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Información Personal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			<table class="table table-sm table-dark">
+			  <thead>
+				<tr>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				<td colspan ="1">Fecha Vinculación</td>
+				<td colspan ="2">{{resumenObject.fecha_vinculacion}}</td>
+				</tr>	
+				<tr>
+				<td colspan ="1">Fecha  última Actualización</td>
+				<td colspan ="2">{{resumenObject.fecha_ultima_actualizacion}}</td>
+				</tr>
+
+				<tr>
+				<td colspan ="1">Fecha  Expedición</td>
+				<td colspan ="2">{{resumenObject.fecha_expedicion}} - {{resumenObject.lugar_expedicion}}</td>
+				</tr>
+				
+				<tr>
+				<td colspan ="1">Direccion Contacto</td> 				
+				<td colspan ="2">{{resumenObject.direccion_contacto_corta}}</td> 
+				</tr>  
+
+				<tr>
+				<td colspan ="1">País</td> 				
+				<td colspan ="2">{{resumenObject.pais}}</td> 
+				</tr>
+				<tr>
+				<td colspan ="1">Lugar Residencia</td> 				
+				<td colspan ="2">{{resumenObject.lugar_residencia}}</td> 
+				</tr>
+				<tr>
+				<td colspan ="1">Negocio</td> 				
+				<td colspan ="2">{{resumenObject.ind_persona_natural_negocio}}</td> 
+				</tr>
+
+				<tr>
+				<td colspan ="1">CIIU</td> 				
+				<td colspan ="2">{{resumenObject.ciiu}}</td> 
+				</tr>		
+				<tr>
+				<td colspan ="1">Actividada Laboral</td> 				
+				<td colspan ="2">{{resumenObject.actividad_laboral}}</td> 
+				</tr>
+				<tr>
+				<td colspan ="1">Operaciones Internacionales</td> 				
+				<td colspan ="2">{{resumenObject.operaciones_internacionales}}</td> 
+				</tr>
+				<tr>
+				<td colspan ="1">PEPS</td> 				
+				<td colspan ="2">{{resumenObject.peps}}</td> 
+				</tr>
+
+				<tr>
+				<td colspan ="1">Fatca</td> 				
+				<td colspan ="2">{{resumenObject.impactado_fatca}}</td> 
+				</tr>
+				<tr>
+				<td colspan ="1">Residencia Legal  Otro País</td> 				
+				<td colspan ="2">{{resumenObject.tiene_residenc_legal_otro_pais}}</td> 
+				</tr>	
+				<tr>
+				<td colspan ="1">Dirección  Otro País</td> 				
+				<td colspan ="2"> {{resumenObject.pais_de_la_direccion}}  - {{resumenObject.direccion_otro_pais}}</td> 
+				</tr>				
+				<tr>
+				<td colspan ="1">Nro TIN</td> 				
+				<td colspan ="2">{{resumenObject.nro_tin}}</td> 
+				</tr>	
+				<tr>
+				<td colspan ="1">Periodo</td> 				
+				<td colspan ="2">{{resumenObject.periodo}}</td> 
+				</tr>
+
+				<tr>
+				<td colspan ="1">Total Ingresos</td> 				
+				<td colspan ="2">{{resumenObject.total_ingresos|floatformat:0|intcomma}}</td> 
+				</tr>
+
+				<tr>
+				<td colspan ="1">Total Egresos</td> 				
+				<td colspan ="2">{{resumenObject.total_egresos|floatformat:0|intcomma}}</td> 
+				</tr>
+
+				<tr>
+				<td colspan ="1">Total Activos</td> 				
+				<td colspan ="2">{{resumenObject.total_activos|floatformat:0|intcomma}}</td> 
+				</tr>
+
+				<tr>
+				<td colspan ="1">Total Pasivos</td> 				
+				<td colspan ="2">{{resumenObject.total_pasivos|floatformat:0|intcomma}}</td> 
+				</tr>
+					
+			  </tbody>
+			</table>		 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="personalInformationME" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Información Financiera ME </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			<table class="table table-sm table-dark">
+			  <thead>
+				<tr>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				<td colspan ="1">Promedio Dolar </td>
+				<td colspan ="1">{{resumenInfoFinancieraMe.avg_valor_usd|floatformat:0|intcomma}} </td>     
+				</tr>	
+				
+				<tr>
+				<td colspan ="1">Monto Medio de Dolar </td>
+				<td colspan ="1">{{resumenInfoFinancieraMe.monto_usd_q50|floatformat:0|intcomma}}</td>     
+				</tr>	
+				
+				<tr>
+				<td colspan ="1">M&aacute;ximo d&iacute;as sin Operar</td>
+				<td colspan ="1">{{resumenInfoFinancieraMe.max_d_sin_oper|floatformat:0|intcomma}}</td>     
+				</tr>
+				
+				<tr>
+				<td colspan ="1">M&iacute;nimo d&iacute;as sin Operar </td>
+				<td colspan ="1">{{resumenInfoFinancieraMe.min_dias_sin_transar|floatformat:0|intcomma}}</td>     
+				</tr>
+				 
+				<tr>
+				<td colspan ="1">D&iacute;as Medio sin realizar Operaciones </td>
+				<td colspan ="1">{{resumenInfoFinancieraMe.dias_sin_transar_q50|floatformat:0|intcomma}}</td>     
+				</tr>
+				 
+				<tr>
+				<td colspan ="1">Total de Transacciones en EU</td>
+				<td colspan ="1">{{resumenInfoFinancieraMe.total_transacciones_eur|floatformat:0|intcomma }}</td>     
+				</tr>				 
+			  		
+                <tr>
+				<td colspan ="1">Total de Transacciones en USD</td>
+				<td colspan ="1">{{resumenInfoFinancieraMe.total_transacciones_usd|floatformat:0|intcomma }}</td>     
+				</tr>
+
+	
+	            <tr>
+				<td colspan ="1">Total de Transacciones en CAD</td>
+				<td colspan ="1">{{resumenInfoFinancieraMe.total_transacciones_cad|floatformat:0|intcomma}}</td>     
+				</tr>	
+
+	            <tr>
+				<td colspan ="1">Antiguedad Transaccional</td>
+				<td colspan ="1">{{resumenInfoFinancieraMe.antiguedad_transaccional|floatformat:0|intcomma}}</td>     
+				</tr>	
+				
+			  </tbody>
+			</table>	  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+  
+<!-- Modal  Productos :-->
+<div class="modal fade" id="modalProducts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Productos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		 <table class="table">
+		  <thead class="thead-dark">
+			<tr>
+			  <th scope="col">Producto</th>
+			  <th scope="col">Cupo</th>
+			</tr>
+		  </thead>
+		  <tbody>
+		  {% if productosResult %}
+			  {% for products in productosResult %}
+				<tr>
+				  <td>{{products.numero_cuenta}}</td>
+				  <td>{{products.nombre_producto}}</td>
+				</tr>
+			 {% endfor %}	
+		  {% else %} 
+		  <tr>
+		   <td colspan='2'>
+			<p> <b> No se encontraron datos </b> </p>
+		   </td>
+		  </tr>
+		  {% endif %}	 
+		  </tbody>
+		</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+{% endblock %}

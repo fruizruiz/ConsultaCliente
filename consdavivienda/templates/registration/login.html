@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title> Login - Davivienda Consulta Cliente </title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'consdavivienda/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="{% static 'consdavivienda/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'consdavivienda/css/sb-admin.css' %}" rel="stylesheet">
+<script src="{% static 'consdavivienda/js/index.js' %}"></script>
+</head>
+
+<body class="bg-dark">
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">Login</div>
+      <div class="card-body">
+		<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Login</button>
+		</form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

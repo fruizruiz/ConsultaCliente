@@ -1,0 +1,6 @@
+projectKey=consdavivienda
+serverUrl=http://127.0.0.1:9000
+serverVersion=7.9.1.27448
+dashboardUrl=http://127.0.0.1:9000/dashboard?id=consdavivienda
+ceTaskId=AW4dT64wud17CbZmE1-U
+ceTaskUrl=http://127.0.0.1:9000/api/ce/task?id=AW4dT64wud17CbZmE1-U

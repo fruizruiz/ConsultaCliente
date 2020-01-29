@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<style>
+.size{
+  width: 500px;
+}
+</style>
+{% extends 'consdavivienda/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="content-wrapper">
+      <div class="container-fluid">
+			<!-- Area PIE-->
+         <div class="row">
+          <div class="col-lg-4">
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fas fa-chart-pie"></i>
+                Pie Divisas</div>
+              <div class="card-body">
+                <canvas id="myPieChart" width="100%" height="100"></canvas>
+              </div>
+              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM <span>Usuario {{user.username}}</span></div>
+            </div>
+          </div>
+        </div>	
+	</div>
+</div>	
+{% endblock %}

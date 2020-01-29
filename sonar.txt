@@ -1,0 +1,1 @@
+sonar-scanner.bat -D"sonar.projectKey=consdavivienda" -D"sonar.projectBaseDir=D:\BKASW\OneDrive - Asesoftware S.A.S\BKASW\Documentos\ProjectosDjango\consclieproject\consdavivienda" -D"sonar.sources=." -D"sonar.host.url=http://127.0.0.1:9000" -D"sonar.login=2fd3630ef3d240ee7c6bebe46a2adb99feff774b"

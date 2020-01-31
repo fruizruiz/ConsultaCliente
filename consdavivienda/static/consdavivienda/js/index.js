@@ -1,4 +1,4 @@
-function ajaxCall() {
+	function ajaxCall() {
 	var id = $("#identificacion").val();
     $.getJSON("http://127.0.0.1:8000/consdavivienda/sugiereIdentificacion/"+id+"/",
         function(data) {

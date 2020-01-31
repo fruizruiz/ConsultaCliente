@@ -43,21 +43,38 @@ def elementos_id(request, id):
 def tarjetaresumen(request,id):
 	if not request.user.is_authenticated:
 		return HttpResponseRedirect('/consdavivienda/accounts/login/')
+		
 	try:
 		clienteObj = Cliente.objects.get(identificacion=id)
 		if clienteObj.tipo_persona == 'PN' : 
 			resumenInfoPersona=ResumenInfoPersonaNatural.objects.get(identificacion=id)
 		else :
 			resumenInfoPersona=ResumenInfoPersonaJuridica.objects.get(identificacion=id)	
+		
 		productosResult = ResumenProductosUsuario.objects.filter(identificacion=id)
-		resumenInfoFinancieraMe =  ResumenFinancieraMe.objects.get(identificacion=id)
-	except clienteObj.DoesNotExist:
+		
+		try :
+			resumenInfoFinancieraMe =  ResumenFinancieraMe.objects.get(identificacion=id)
+		except :
+		    resumenInfoFinancieraMe="";
+		
+		if clienteObj.tipo_persona == 'PN' : 
+			return render(request, 'consdavivienda/tarjetaresumen_pnatural.html', {'resumenObject': resumenInfoPersona,'productosResult':productosResult,'resumenInfoFinancieraMe':resumenInfoFinancieraMe})
+		else:
+			return render(request, 'consdavivienda/tarjetaresumen_pjuridica.html', {'resumenObject': resumenInfoPersona,'productosResult':productosResult,'resumenInfoFinancieraMe':resumenInfoFinancieraMe})
+	except Cliente.DoesNotExist:
+		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id'})		
+	except 	ResumenInfoPersonaNatural.DoesNotExist:
+		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id'})	
+	except 	ResumenInfoPersonaJuridica.DoesNotExist:
+		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id'})	
+	"""	
+	except 	productosResult.DoesNotExist:
 		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id'})
-	if clienteObj.tipo_persona == 'PN' : 
-		return render(request, 'consdavivienda/tarjetaresumen_pnatural.html', {'resumenObject': resumenInfoPersona,'productosResult':productosResult,'resumenInfoFinancieraMe':resumenInfoFinancieraMe})
-	else:
-		return render(request, 'consdavivienda/tarjetaresumen_pjuridica.html', {'resumenObject': resumenInfoPersona,'productosResult':productosResult,'resumenInfoFinancieraMe':resumenInfoFinancieraMe})
-
+	except 	productosResult.DoesNotExist:
+		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id'})
+	"""	
+	
 def chartsresumen(request):
 	if not request.user.is_authenticated:
 		return HttpResponseRedirect('/consdavivienda/accounts/login/')

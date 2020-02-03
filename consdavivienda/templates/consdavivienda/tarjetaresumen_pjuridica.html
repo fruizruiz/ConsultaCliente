@@ -219,52 +219,52 @@
 				<tr>
 				</tr>
 			  </thead>
-			  <tbody>
+			 <tbody>	
 				<tr>
 				<td colspan ="1">Promedio Dolar </td>
-				<td colspan ="1">{{resumenInfoFinancieraMe.avg_valor_usd|floatformat:0|intcomma}} </td>     
+				<td colspan ="1">{%if resumenInfoFinancieraMe.avg_valor_usd %}{{resumenInfoFinancieraMe.avg_valor_usd|floatformat:0|intcomma}}{%else%}{{0}} {%endif%} </td>     
 				</tr>	
 				
 				<tr>
 				<td colspan ="1">Monto Medio de Dolar </td>
-				<td colspan ="1">{{resumenInfoFinancieraMe.monto_usd_q50|floatformat:0|intcomma}}</td>     
+				<td colspan ="1">{% if resumenInfoFinancieraMe.monto_usd_q50%}{{resumenInfoFinancieraMe.monto_usd_q50|floatformat:0|intcomma}}{%else%}{{0}} {%endif%}</td>     
 				</tr>	
 				
 				<tr>
 				<td colspan ="1">M&aacute;ximo d&iacute;as sin Operar</td>
-				<td colspan ="1">{{resumenInfoFinancieraMe.max_d_sin_oper|floatformat:0|intcomma}}</td>     
+				<td colspan ="1">{% if resumenInfoFinancieraMe.max_d_sin_oper%}{{resumenInfoFinancieraMe.max_d_sin_oper|floatformat:0|intcomma}}{%else%}{{0}} {%endif%}</td>     
+				</tr>
+
+				<tr>
+				<td colspan ="1">M&iacute;nimo d&iacute;as sin Operar </td>
+				<td colspan ="1">{% if resumenInfoFinancieraMe.min_dias_sin_transar%}{{resumenInfoFinancieraMe.min_dias_sin_transar|floatformat:0|intcomma}}{%else%}{{0}} {%endif%}</td>     
 				</tr>
 				
 				<tr>
-				<td colspan ="1">M&iacute;nimo d&iacute;as sin Operar </td>
-				<td colspan ="1">{{resumenInfoFinancieraMe.min_dias_sin_transar|floatformat:0|intcomma}}</td>     
-				</tr>
-				 
-				<tr>
 				<td colspan ="1">D&iacute;as Medio sin realizar Operaciones </td>
-				<td colspan ="1">{{resumenInfoFinancieraMe.dias_sin_transar_q50|floatformat:0|intcomma}}</td>     
+				<td colspan ="1">{% if resumenInfoFinancieraMe.dias_sin_transar_q50 %}{{resumenInfoFinancieraMe.dias_sin_transar_q50|floatformat:0|intcomma}}{%else%}{{0}} {%endif%}</td>     
 				</tr>
 				 
 				<tr>
 				<td colspan ="1">Total de Transacciones en EU</td>
-				<td colspan ="1">{{resumenInfoFinancieraMe.total_transacciones_eur|floatformat:0|intcomma }}</td>     
+				<td colspan ="1">{% if resumenInfoFinancieraMe.total_transacciones_eur %}{{resumenInfoFinancieraMe.total_transacciones_eur|floatformat:0|intcomma }}{%else%}{{0}}{%endif%}</td>     
 				</tr>				 
 			  		
                 <tr>
 				<td colspan ="1">Total de Transacciones en USD</td>
-				<td colspan ="1">{{resumenInfoFinancieraMe.total_transacciones_usd|floatformat:0|intcomma }}</td>     
+				<td colspan ="1">{%if resumenInfoFinancieraMe.total_transacciones_usd%}{{resumenInfoFinancieraMe.total_transacciones_usd|floatformat:0|intcomma}}{%else%} {{0}}{%endif%}</td>     
 				</tr>
 
 	
 	            <tr>
 				<td colspan ="1">Total de Transacciones en CAD</td>
-				<td colspan ="1">{{resumenInfoFinancieraMe.total_transacciones_cad|floatformat:0|intcomma}}</td>     
+				<td colspan ="1">{% if resumenInfoFinancieraMe.total_transacciones_cad%}{{resumenInfoFinancieraMe.total_transacciones_cad|floatformat:0|intcomma}}{%else%}{{0}}{%endif%}</td>     
 				</tr>	
 
 	            <tr>
 				<td colspan ="1">Antiguedad Transaccional</td>
-				<td colspan ="1">{{resumenInfoFinancieraMe.antiguedad_transaccional|floatformat:0|intcomma}}</td>     
-				</tr>	
+				<td colspan ="1">{% if resumenInfoFinancieraMe.antiguedad_transaccional%}{{resumenInfoFinancieraMe.antiguedad_transaccional|floatformat:0|intcomma}}{%else%}{{0}}{%endif%}</td>     
+				</tr>					
 				
 			  </tbody>
 			</table>	  

@@ -108,7 +108,7 @@ def sugiereIdentificacion(request,id):
 	if not request.user.is_authenticated:
 		return HttpResponseRedirect('/consdavivienda/accounts/login/')
 	try:
-		elementos = ResumenFiltros.objects.raw('SELECT id,identificacion, descripcion as nombre , tipo_persona as primer_apellido FROM consdavivienda_cliente WHERE identificacion like %s ',[id+'%'])
+		elementos = ResumenFiltros.objects.raw('SELECT id,identificacion, descripcion as nombre , tipo_persona as primer_apellido FROM consdavivienda_cliente WHERE identificacion like %s LIMIT 10',[id+'%'])
 	except:
 		raise ValidationError({'id': ['No existe elementos ' + id]})
 	data = serializers.serialize('json',elementos)	

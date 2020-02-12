@@ -130,7 +130,7 @@ class ResumenInfoPersonaJuridica (models.Model) :
 	clase_empresa = models.CharField(max_length=100, default='NA',null=True)
 	celular_principal = models.CharField(max_length=100, default='NA',null=True)
 	correo_electronico = models.CharField(max_length=100, default='NA',null=True)
-	direccion = models.CharField(max_length=100, default='NA',null=True)
+	direccion = models.CharField(max_length=200, default='NA',null=True)
 	ciudad_direccion = models.CharField(max_length=100, default='NA',null=True)
 	segmento_empresarial = models.CharField(max_length=100, default='NA',null=True)
 	total_ingresos = models.CharField(max_length=100, default='0',null=True)
@@ -146,3 +146,4 @@ class ResumenInfoPersonaJuridica (models.Model) :
 	controla_lavado_de_activos = models.CharField(max_length=100, default='NA',null=True)
 	cliente_peps = models.CharField(max_length=100, default='NA',null=True)
 	maneja_recursos_publicos = models.CharField(max_length=100, default='NA',null=True)
+	antiguedad = models.CharField(max_length=100, default='0',null=True)

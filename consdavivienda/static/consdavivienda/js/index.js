@@ -1,20 +1,18 @@
 	function ajaxCall() {
 	var id = $("#identificacion").val();
-    $.getJSON("http://127.0.0.1:8000/consdavivienda/sugiereIdentificacion/"+id+"/",
+    $.getJSON("/consdavivienda/sugiereIdentificacion/"+id+"/",
         function(data) {
-			//alert(data['fields'])
 			console.log(data)
 		$.each(data, function(k, v) {    
              alert(k);		
 			 alert(v.fields.identificacion);
-               // alert(data['fields'].identificacion);
         });
     });        
 }
 
     $('#identificacion').autocomplete({
 		source:  function (request, response) {
-        $.getJSON("http://127.0.0.1:8000/consdavivienda/sugiereIdentificacion/"+$("#identificacion").val()+"/", function (data) {
+        $.getJSON("/consdavivienda/sugiereIdentificacion/"+$("#identificacion").val()+"/", function (data) {
 			response($.map(data, function (value, key) {
                 return {
                     label: value.fields.identificacion+" "+value.fields.nombre,
@@ -35,7 +33,7 @@ consultaCliente()
 function consultaCliente() {
     // var url = $("#formProject").attr("data-project-url");
     var id = $("#identificacion").val();
-	var host ="http://127.0.0.1:8000/consdavivienda/elementos/"+id+"/" 
+	var host ="/consdavivienda/elementos/"+id+"/" 
 	$.ajax({
 	type: "GET",
 	dataType: "json",
@@ -61,5 +59,5 @@ function consultaCliente() {
 
 function consultaPerfil() { 
    var id = $("#identificacion").val();
-   window.location = "http://127.0.0.1:8000/consdavivienda/tarjetaresumen/"+id;
+   window.location = "/consdavivienda/tarjetaresumen/"+id;
 }

@@ -6,7 +6,7 @@ consultaDivisas()
 function consultaDivisas() {
     // var url = $("#formProject").attr("data-project-url");
 	var result =[];
-	var host ="http://127.0.0.1:8000/consdavivienda/totaldivisas/1/" 
+	var host ="/consdavivienda/totaldivisas/1/" 
 	$.ajax({
 	type: "GET",
 	dataType: "json",

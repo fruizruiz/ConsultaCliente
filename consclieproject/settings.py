@@ -80,10 +80,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dbconsultas',
-        'USER': 'postgres',
-        'PASSWORD': 'passwd',
-        'HOST': 'localhost',
+        'USER': 'userdb@dbconsulta.postgres.database.azure.com',
+        'PASSWORD': '$PasswdPostgres',
+        'HOST': 'dbconsulta.postgres.database.azure.com',
         'PORT': '5432',
+        'OPTIONS': {'sslmode': 'require'},
     }
 }
 

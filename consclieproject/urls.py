@@ -20,7 +20,7 @@ from django.conf import settings
 from django.views.static import serve
 
 urlpatterns = [
-    path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+    path('static/',include('consdavivienda.urls')),
     path('polls/', include('polls.urls')),
 	path('consdavivienda/', include('consdavivienda.urls')),
     path('admin/', admin.site.urls),

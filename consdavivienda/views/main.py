@@ -63,17 +63,11 @@ def tarjetaresumen(request,id):
 		else:
 			return render(request, 'consdavivienda/tarjetaresumen_pjuridica.html', {'resumenObject': resumenInfoPersona,'productosResult':productosResult,'resumenInfoFinancieraMe':resumenInfoFinancieraMe})
 	except Cliente.DoesNotExist:
-		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id'})		
+		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id 1'})		
 	except 	ResumenInfoPersonaNatural.DoesNotExist:
-		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id'})	
+		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id 2'})	
 	except 	ResumenInfoPersonaJuridica.DoesNotExist:
-		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id'})	
-	"""	
-	except 	productosResult.DoesNotExist:
-		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id'})
-	except 	productosResult.DoesNotExist:
-		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id'})
-	"""	
+		return render(request, 'consdavivienda/NoFound.html', {'error':'No existe id 3'})	
 	
 def chartsresumen(request):
 	if not request.user.is_authenticated:

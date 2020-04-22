@@ -19,8 +19,6 @@ from django.conf.urls import include
 
 
 urlpatterns = [
-    path('polls/', include('polls.urls')),
 	path('consdavivienda/', include('consdavivienda.urls')),
-    path('admin/', admin.site.urls),
 	path('api-auth/', include('rest_framework.urls')),
 ]

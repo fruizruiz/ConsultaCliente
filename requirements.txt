@@ -3,7 +3,7 @@ colorama==0.4.1
 cycler==0.10.0
 Django==2.2.5
 django-filter==2.2.0
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 isort==4.3.21
 kiwisolver==1.1.0
 lazy-object-proxy==1.4.3
